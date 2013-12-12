@@ -1,0 +1,45 @@
+<div class="row">
+			<div class="span8">
+				<div class="input-append">
+					<input  class="span2" type="text" ng-model="model.teamName" placeholder="Team Name">
+					<button class="btn btn-inverse" ng-click="getPlayers()">Get Players</button>
+				</div>
+				
+				<form name="newPlayerForm" ng-submit="addPlayer()" class="hero-unit">
+					<h2>Add a New Player</h2>
+					<div>
+						<label>Name</label>
+						<div>
+							<input type="text" placeholder="First Name" ng-model="player.firstName" required>
+							<input type="text" placeholder="Last Name" ng-model="player.lastName" required>
+						</div>
+						<label>Number</label>
+						<div>
+							<input type="text" placeholder="Number" ng-model="player.number" required>
+						</div>
+					</div>
+					<div class="">
+						<label for="team">Team</label>
+						<div>
+							<select id="team" placeholder="Pick a Team" ng-model="player.teamName" required>
+								<option value="PENGUINS">Penguins</option>
+								<option value="PIRATES">Pirates</option>
+								<option value="STEELERS">Steelers</option>
+							</select>
+						</div>
+					</div>
+		
+					<button type="submit" class="btn btn-primary">Add Player</button>
+				</form>
+			</div>
+			<div id="players" class="span4">
+				
+				<dl  class="dl-horizontal" ng-repeat="player in model.team.players">
+					<a href="#/player/{{player.id}}">
+						<dt>{{player.firstName}} {{player.lastName}}</dt>
+					</a>
+						<dd class="muted"><team-logo team="{{player.teamName}}"></team-logo></dd>
+				</dl>
+				
+			</div>
+		</div>
